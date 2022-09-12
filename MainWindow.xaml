@@ -7,24 +7,50 @@
         mc:Ignorable="d"
         Title="MainWindow"  SizeToContent="WidthAndHeight">
     <StackPanel Orientation="Vertical" Margin="10">
-        <Border Background="GhostWhite" BorderBrush="Coral" BorderThickness="2" HorizontalAlignment= "Left" VerticalAlignment="Top" Margin="10">
-            <Grid HorizontalAlignment="Left" Height="153" VerticalAlignment="Top" Width="346" Margin="2" Background="#00000000">
-                <Button x:Name="showBtn" Content="SHOW" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="87" Click="showBtn_Click"/>
-                <TextBox x:Name="ipTbx" HorizontalAlignment="Left" Margin="10,49,0,0" TextWrapping="Wrap" Text="147.161.1.1" VerticalAlignment="Top" Width="107" Height="21"/>
-                <TextBlock x:Name="infoTxtBlk" HorizontalAlignment="Left" Height="97" Margin="117,11,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="215"/>
-                <Button x:Name="clearButton" Content="CLEAR" HorizontalAlignment="Left" Margin="2,87,0,0" VerticalAlignment="Top" Height="36" Width="85" Click="clearButton_Click"/>
+        <Border Grid.Row="0" Background="GhostWhite" BorderBrush="Coral" BorderThickness="2"
+                HorizontalAlignment= "Left" VerticalAlignment="Top" Margin="10"  CornerRadius="10">
+            <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="346" Margin="2" Background="#00000000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="showBtn" Content="SHOW" HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="87" Click="showBtn_Click" Margin="12,0,0,0"/>
+                <TextBlock x:Name="infoTxtBlk" HorizontalAlignment="Right" Height="120" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="215" Grid.RowSpan="3" Margin="20,10,10,0" />
+                <TextBox x:Name="ipTbx" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="147.161.1.1" VerticalAlignment="Center"  Margin="12"/>
+                <Button x:Name="clearButton"  Grid.Row="2"  Content="CLEAR" HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="85" Click="clearButton_Click" Margin="12,0,0,0"/>
             </Grid>
         </Border>
         <Border  Grid.Row="1" Background="GhostWhite" BorderBrush="Coral" BorderThickness="2" HorizontalAlignment= "Left" 
-                 Margin="10" Height="202" Width="479">
-            <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="2" Height="188" Width="465">
-                <Button x:Name="geoButton"  Content="GeoLocation" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="86" Click="geoButton_Click"/>
-                <TextBlock x:Name="geoTxtBlk" HorizontalAlignment="Left" Height="150" Margin="225,7,0,0" 
-                        TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215"/>
-                <Button x:Name="geoToggleBtn"  Content="TOGGLE" HorizontalAlignment="Left" Height="39" Margin="104,86,0,0" VerticalAlignment="Top" Width="86" Click="geoToggle_Click"/>
-                <TextBox x:Name="geoTxtBx"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kfar Ivri1 10, Jerusalem" VerticalAlignment="Top" Width="190" Height="26" Margin="0,55,0,0"/>
-                <Button x:Name="reverseBtn"  Content="Reverse" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="86" Margin="0,88,0,0" Click="reverseBtn_Click" IsEnabled="False"/>
-            </Grid>
+                 Margin="10" Height="202" Width="479" CornerRadius="10">
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <Grid  VerticalAlignment="Top" Margin="12" Height="158" Width="205">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="*"/>
+                        <RowDefinition  Height="*"/>
+                        <RowDefinition  Height="*"/>
+                        <RowDefinition  Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="geoXMLButton" Content="GeoLocation XML" VerticalAlignment="Center" Margin="2" HorizontalContentAlignment="Center" Click="geoXMLButton_Click"/>
+                    <Button x:Name="geoJsonButton" Content= "GeoLocation Json"  Grid.Column="1" HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="2"
+                            Click="reverseBtn_Click" IsEnabled="True"/>
+                    <TextBox x:Name="geoTxtBx"  Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kfar Ivri1 10, Jerusalem" VerticalAlignment="Top" Width="161" Height="26" Margin="5,5,0,0"/>
+                    <Button x:Name="reverseBtn"  Grid.Row="2" Grid.Column="0" Content="Reverse XML" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center"
+                            Margin="5,5,0,0" Click="reverseXMLBtn_Click" IsEnabled="False" />
+                    <Button x:Name="reverseJsonBtn"  Grid.Row="2"  Grid.Column="1" Content="Reverse Json" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" 
+                            Margin="8,5,0,0" Click="reverseJsonBtn_Click" IsEnabled="False"/>
+                    <Button x:Name="geoToggleBtn" Grid.Row="3" Grid.ColumnSpan="2" Content="TOGGLE" HorizontalAlignment="Center" Click="geoToggle_Click" Margin="5"  />
+                </Grid>
+
+                <TextBlock x:Name="geoTxtBlk" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                           Height="118" Width="215" TextWrapping="Wrap" Text="aaaaaaaaa" Margin="10,0,0,0"/>
+
+            </StackPanel>
         </Border>
     </StackPanel>
 </Window>
