@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 using System.Windows;
 using System.Xml.Linq;
 
-namespace Test1
+namespace UsingGeoLocation
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
