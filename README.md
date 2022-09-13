@@ -1,4 +1,4 @@
-# using GeoLocation (forward and reverse)
+# using GeoLocation (forward and reverse) in WPF
 using API from https://opencagedata.com/
 
 **please _Replace_ my APIKey with your own**
