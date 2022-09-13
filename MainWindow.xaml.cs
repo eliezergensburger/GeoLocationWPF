@@ -4,6 +4,10 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Windows;
 using System.Xml.Linq;
+using System.IO;
+using Newtonsoft.Json;
+using System.Text.Json.Nodes;
+using Newtonsoft.Json.Linq;
 
 namespace UsingGeoLocation
 {
@@ -14,14 +18,15 @@ namespace UsingGeoLocation
     {
         bool toggle = false;
 
-        String APIKey = "a8b334461f3a45ca8f6bb6cfcca729e5";
-        String site = "https://api.opencagedata.com/geocode/v1/";
+        readonly String APIKey = "a8b334461f3a45ca8f6bb6cfcca729e5";
+        readonly String site = "https://api.opencagedata.com/geocode/v1/";
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        #region IP to address with Json
         private void showBtn_Click(object sender, RoutedEventArgs e)
         {
             // IP API URL
@@ -60,7 +65,9 @@ namespace UsingGeoLocation
         {
             this.infoTxtBlk.Text = "";
         }
+        #endregion IP to address with Json
 
+        #region with XML
         private void geoXMLButton_Click(object sender, RoutedEventArgs e)
         {
             string geo_API_Url = site + "xml";
@@ -87,7 +94,7 @@ namespace UsingGeoLocation
                 }
             }
         }
-     
+
         private void reverseXMLBtn_Click(object sender, RoutedEventArgs e)
         {
             string geo_API_Url = site + "xml";
@@ -108,14 +115,56 @@ namespace UsingGeoLocation
                 if (httpResponse.IsSuccessStatusCode)
                 {
                     var geolocationInfo1 = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
-                    var xElement = XElement.Load(geolocationInfo1)?.Element("results")?.Element("result")?.Element("formatted");
+                    var result = XElement.Load(geolocationInfo1)?.Element("results")?.Element("result")?.Element("formatted");
 
-                    this.geoTxtBlk.Text = xElement?.Value.ToString();
+                    this.geoTxtBlk.Text = result?.Value.ToString();
 
                 }
             }
         }
+        #endregion with XML
 
+        #region with Json
+        private void geoJsonBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO:
+            string geo_API_Url = site + "json";
+            geo_API_Url += "?key=" + APIKey;
+            geo_API_Url += "&language=he&pretty=1";
+            geo_API_Url += "&q=" + geoTxtBx.Text;
+
+            // Use HttpClient to get the details from the xml response
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/xml"));
+                // Pass API address to get the Geolocation details 
+                httpClient.BaseAddress = new Uri(geo_API_Url);
+                HttpResponseMessage httpResponse = httpClient.GetAsync(geo_API_Url).GetAwaiter().GetResult();
+                // If API is success and receive the response, then get the location details
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    var stream = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+
+                    var serializer = new JsonSerializer();
+
+                    using (var sr = new StreamReader(stream))
+                    {
+                        using (JsonTextReader jsonTextReader = new JsonTextReader(sr))
+                        {
+                            string? result = serializer.Deserialize(jsonTextReader)?.ToString();
+                            if (result != null)
+                            {
+                                JToken? token = JObject.Parse(result).SelectToken("results[0].geometry");
+                                this.geoTxtBlk.Text = $"{(string?)token?.SelectToken("lat")}, {(string?)token?.SelectToken("lng")}";
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
         private void reverseJsonBtn_Click(object sender, RoutedEventArgs e)
         {
             string geo_API_Url = site + "json";
@@ -135,15 +184,27 @@ namespace UsingGeoLocation
                 // If API is success and receive the response, then get the location details
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    var geolocationInfo1 = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
-                    // to be replace with Jason similar feature
-                    var xElement = XElement.Load(geolocationInfo1)?.Element("results")?.Element("result")?.Element("formatted");
+                    var stream = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+                    //TODO: replace with Jason similar feature
+                    var serializer = new JsonSerializer();
 
-                    this.geoTxtBlk.Text = xElement?.Value.ToString();
-
+                    using (var sr = new StreamReader(stream))
+                    {
+                        using (JsonTextReader jsonTextReader = new JsonTextReader(sr))
+                        {
+                            string? result = serializer.Deserialize(jsonTextReader)?.ToString();
+                            if (result != null)
+                            {
+                                var txt = JObject.Parse(result)?.SelectToken("results[0].formatted")?.ToString();
+                                this.geoTxtBlk.Text = txt;
+                            }
+                        }
+                    }
                 }
-            }
+             }
         }
+        #endregion with Json
+
         private void geoToggle_Click(object sender, RoutedEventArgs e)
         {
             // should be change using WPF binding feature
@@ -171,7 +232,6 @@ namespace UsingGeoLocation
             }
         }
 
- 
     }
 }
 
