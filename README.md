@@ -1,7 +1,7 @@
 # using GeoLocation (forward and reverse) in WPF
 using API from https://opencagedata.com/
 
-[Free registration is here](https://opencagedata.com/users/sign_up)
+## [Free registration is here](https://opencagedata.com/users/sign_up)
 
 ## **please _Replace_ my APIKey with your own**
 
