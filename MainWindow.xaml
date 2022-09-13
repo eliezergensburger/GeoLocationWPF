@@ -38,7 +38,7 @@
                     <Button x:Name="geoXMLButton" Content="GeoLocation XML" VerticalAlignment="Center" Margin="2" HorizontalContentAlignment="Center" Click="geoXMLButton_Click"/>
                     <Button x:Name="geoJsonButton" Content= "GeoLocation Json"  Grid.Column="1" HorizontalAlignment="Left" 
                             VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="2"
-                            Click="reverseBtn_Click" IsEnabled="True"/>
+                            Click="reverseJsonBtn_Click" IsEnabled="True"/>
                     <TextBox x:Name="geoTxtBx"  Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Kfar Ivri1 10, Jerusalem" VerticalAlignment="Top" Width="161" Height="26" Margin="5,5,0,0"/>
                     <Button x:Name="reverseBtn"  Grid.Row="2" Grid.Column="0" Content="Reverse XML" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center"
                             Margin="5,5,0,0" Click="reverseXMLBtn_Click" IsEnabled="False" />
@@ -48,7 +48,7 @@
                 </Grid>
 
                 <TextBlock x:Name="geoTxtBlk" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                           Height="118" Width="215" TextWrapping="Wrap" Text="aaaaaaaaa" Margin="10,0,0,0"/>
+                           Height="118" Width="215" TextWrapping="Wrap"  Margin="10,0,0,0"/>
 
             </StackPanel>
         </Border>

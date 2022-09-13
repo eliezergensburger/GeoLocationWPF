@@ -82,7 +82,7 @@ namespace Test1
                     var geolocationInfo1 = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
                     var xElement = XElement.Load(geolocationInfo1)?.Element("results")?.Element("result")?.Element("geometry");
 
-                    this.geoTxtBlk.Text = String.Format("{0}, {1}", xElement.Element("lat").Value, xElement.Element("lng").Value);
+                    this.geoTxtBlk.Text = String.Format("{0}, {1}", xElement?.Element("lat")?.Value, xElement?.Element("lng")?.Value);
 
                 }
             }
@@ -136,6 +136,7 @@ namespace Test1
                 if (httpResponse.IsSuccessStatusCode)
                 {
                     var geolocationInfo1 = httpResponse.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+                    // to be replace with Jason similar feature
                     var xElement = XElement.Load(geolocationInfo1)?.Element("results")?.Element("result")?.Element("formatted");
 
                     this.geoTxtBlk.Text = xElement?.Value.ToString();
@@ -145,14 +146,17 @@ namespace Test1
         }
         private void geoToggle_Click(object sender, RoutedEventArgs e)
         {
+            // should be change using WPF binding feature
+
             this.geoTxtBlk.Text = "";
             //this.geoTxtBx.Text = "31.8414127, 35.2473471";
             switch (toggle)
             {
                 case false:
-                    this.geoTxtBx.Text = "32.17094, 35.08297";
+                    this.geoTxtBx.Text = "31.8414127, 35.2473471";
                     toggle = true;
                     this.reverseBtn.IsEnabled = true;
+                    this.reverseJsonBtn.IsEnabled = true;
                     this.geoXMLButton.IsEnabled = false;
                     this.geoJsonButton.IsEnabled = false;
                     break;
@@ -160,6 +164,7 @@ namespace Test1
                     this.geoTxtBx.Text = "Kfar Ivri 10, Jerusalem";
                     toggle = false;
                     this.reverseBtn.IsEnabled = false;
+                    this.reverseJsonBtn.IsEnabled = false;
                     this.geoXMLButton.IsEnabled = true;
                     this.geoJsonButton.IsEnabled = true;
                     break;
