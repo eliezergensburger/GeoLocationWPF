@@ -216,7 +216,7 @@ namespace UsingGeoLocation
                 case false:
                     this.geoTxtBx.Text = "31.8414127, 35.2473471";
                     toggle = true;
-                    this.reverseBtn.IsEnabled = true;
+                    this.reverseXMLBtn.IsEnabled = true;
                     this.reverseJsonBtn.IsEnabled = true;
                     this.geoXMLButton.IsEnabled = false;
                     this.geoJsonButton.IsEnabled = false;
@@ -224,7 +224,7 @@ namespace UsingGeoLocation
                 case true:
                     this.geoTxtBx.Text = "Kfar Ivri 10, Jerusalem";
                     toggle = false;
-                    this.reverseBtn.IsEnabled = false;
+                    this.reverseXMLBtn.IsEnabled = false;
                     this.reverseJsonBtn.IsEnabled = false;
                     this.geoXMLButton.IsEnabled = true;
                     this.geoJsonButton.IsEnabled = true;
