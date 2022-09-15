@@ -13,11 +13,15 @@
 
 ![image](https://user-images.githubusercontent.com/22365623/190483267-8f38e629-b218-45f4-8e32-f8ca4863cb63.png)
 
-> ### ** _Replace_ my APIKey with your own**
+> ### ** _Replace_ my APIKey code with your own**
+> ### in the declaration of the string in the following code
+> 
 
 ![image](https://user-images.githubusercontent.com/22365623/189957524-2be38426-34b8-4a35-ab4a-24c15bbbf0f6.png)
 
+
 ## from OpenCageData Dashboard
+
 
 ![image](https://user-images.githubusercontent.com/22365623/190487343-a9b1f4e2-23de-4155-be10-c77fed1989b7.png)
 
