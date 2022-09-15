@@ -14,7 +14,7 @@
 ![image](https://user-images.githubusercontent.com/22365623/190483267-8f38e629-b218-45f4-8e32-f8ca4863cb63.png)
 
 > ### _Replace_ my APIKey code with your own key  obtained from OpenCageData
-> ### in the declaration of the string at the end of ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) (_readonly String APIKey =_)
+> ### in the declaration of the string at the end of <span style="color:red">_readonly String APIKey =_</span>
 > 
 
 ![image](https://user-images.githubusercontent.com/22365623/189957524-2be38426-34b8-4a35-ab4a-24c15bbbf0f6.png)
