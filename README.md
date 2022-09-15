@@ -8,7 +8,8 @@
 ![image](https://user-images.githubusercontent.com/22365623/190487956-af301622-bf21-48d5-b5a0-7d2e8db48ec3.png)
 
 
-> ### Free registration is [here](https://opencagedata.com/users/sign_up) whithout supplying Credit Card information
+> ### Free registration is [here](https://opencagedata.com/users/sign_up) 
+> whithout supplying Credit Card information
 
 ![image](https://user-images.githubusercontent.com/22365623/190483267-8f38e629-b218-45f4-8e32-f8ca4863cb63.png)
 
