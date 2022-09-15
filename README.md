@@ -9,7 +9,9 @@ using API from https://opencagedata.com/
 
 ![image](https://user-images.githubusercontent.com/22365623/189957524-2be38426-34b8-4a35-ab4a-24c15bbbf0f6.png)
 
-![image](https://user-images.githubusercontent.com/22365623/190487140-534b9eaa-5852-43bc-9aae-9b637d8a9e8d.png)
+## from OpenCageData Dashboard
+
+![image](https://user-images.githubusercontent.com/22365623/190487343-a9b1f4e2-23de-4155-be10-c77fed1989b7.png)
 
 
 # Thanks
