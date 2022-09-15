@@ -13,7 +13,7 @@
 
 ![image](https://user-images.githubusercontent.com/22365623/190483267-8f38e629-b218-45f4-8e32-f8ca4863cb63.png)
 
-> ### ** _Replace_ my APIKey code with your own**
+> ### _Replace_ my APIKey code with your own key  obtained from OpenCageData
 > ### in the declaration of the string in the following code
 > 
 
